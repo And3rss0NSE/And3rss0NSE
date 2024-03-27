@@ -1,0 +1,43 @@
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
+import os
+import torch
+import numpy as np
+import pandas as pd
+import re  # Import regular expressions library
+from torch import nn
+from torch.utils.data import DataLoader
+from torchvision import datasets, transforms
+
+
+print(f"Hello, welcome to the neural network for Husqvarnagroup Manufacturing IT")
+print(f"Created by Kim Andersson with help from Google's A.I Gemini")
+
+
+device = (
+    "cuda"
+    if torch.cuda.is_available()
+    else "mps"
+    if torch.backends.mps.is_available()
+    else "cpu"
+)
+
+print(f"Torch will be using {device} ")
+
+df = pd.read_csv("Assy_BAR_Brastad.csv", on_bad_lines='skip')
+print(f"CSV File loaded successfuly !")
+
+short_desc = 'short_description'
+short_desc = df['short_description']
+work_notevar = 'work_note'
+work_notevar = df['work_note']
+
+# Initialize index
+i = 0
+incident_index = 0
+
+# While loop 
+while i < len(short_desc):
+    print(short_desc[i])
+    print(work_notevar[i])
+    i += 1
